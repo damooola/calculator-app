@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         setState(() {
                           userQuestion = '';
+                          userAnswer = '';
                         });
                       });
                 } else if (index == 1) {
@@ -120,6 +121,15 @@ class _HomePageState extends State<HomePage> {
                     buttonText: buttons[index],
                     onTap: () => setState(() {
                       equalSignPressed();
+                    }),
+                  );
+                } else if (index == buttons.length - 2) {
+                  return MyButton(
+                    color: Colors.black,
+                    textColor: Colors.white,
+                    buttonText: buttons[index],
+                    onTap: () => setState(() {
+                      ansPreseed();
                     }),
                   );
                 } else {
@@ -151,5 +161,9 @@ class _HomePageState extends State<HomePage> {
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
     userAnswer = eval.toString();
+  }
+
+  void ansPreseed() {
+    userQuestion = userAnswer;
   }
 }
